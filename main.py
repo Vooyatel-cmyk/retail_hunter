@@ -39,6 +39,7 @@ async def main(tab_resiolver, page_loader, product_searcher, cleaner):
 
         clprod = await cleaner.clean_raw_price(raw_data, 'raw_price')
         clprod = await cleaner.clean_raw_old_price(clprod, 'raw_old_price')
+        clprod = await cleaner.process_sale_percent(clprod, 'raw_price', 'raw_old_price')
         
         pprint.pprint(clprod)
 

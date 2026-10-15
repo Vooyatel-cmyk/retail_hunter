@@ -30,3 +30,11 @@ class Cleaner:
                 else:
                     continue
         return products
+
+    async def process_sale_percent(self, products, new_price, old_price):
+        for product in products:
+            if product[new_price] is not None and product[old_price] is not None:
+                product['sale_percent'] = round((1 - (float(product[new_price]) / float(product[old_price]))) * 100, 2)
+            else:
+                product['sale_percent'] = 0 
+        return products
