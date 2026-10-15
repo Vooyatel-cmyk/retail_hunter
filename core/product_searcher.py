@@ -33,7 +33,7 @@ class ProductSearcher:
             }
         
         except Exception as e: 
-            print(f"Ошибка внутри карточки: {e}") # ТУТ МЫ УВИДИМ ОШИБКУ
+            print(f"Ошибка внутри карточки: {e}")
             return None
 
     
