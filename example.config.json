@@ -1,0 +1,14 @@
+{
+  "network_settings": {
+    "cdp_url": "http://localhost:9222",
+    "timeout_seconds": 5000
+  },
+  "parsing_targets": {
+    "target_tab_keyword": "https://example.com/",
+    "categories": "https://example.com/category"
+  },
+  "storage_settings": {
+    "output_file_path": "outputs/catalog_report.xlsx",
+    "excel_structure_type": "single_sheet_with_category_column"
+  }
+}

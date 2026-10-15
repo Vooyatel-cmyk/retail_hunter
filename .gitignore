@@ -1,0 +1,6 @@
+.venv/
+.logs/
+.result/
+__pycache__/
+*.xlsx
+config.json
