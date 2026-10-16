@@ -4,7 +4,7 @@ class Cleaner:
 
     async def clean_raw_price(self, products: list[dict], key: str) -> list[dict]:
         for product in products: 
-            if '\xa0' and '\n' not in product[key]:
+            if '\xa0' not in product[key] and '\n' not in product[key]:
                 continue
             if '\n' in product[key]:
 

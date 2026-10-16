@@ -21,11 +21,11 @@ target_tab_keyword = config["parsing_targets"]["target_tab_keyword"]
 timeout_delay = config["network_settings"]["timeout_seconds"]
 category = config["parsing_targets"]["categories"]
 
-async def main(tab_resiolver, page_loader, product_searcher, cleaner):
+async def main(tab_resolver, page_loader, product_searcher, cleaner):
 
     async with async_playwright() as p:
 
-        page = await tab_resiolver.get_target_page(p)
+        page = await tab_resolver.get_target_page(p)
         print("Успешно подключились к странице:", await page.title())
 
         await page_loader.scroll_page(page, timeout_delay)
@@ -44,4 +44,12 @@ async def main(tab_resiolver, page_loader, product_searcher, cleaner):
         pprint.pprint(clprod)
 
 
-asyncio.run(main(TabResolver(cdp_url, target_tab_keyword, category), PageLoader(), ProductSearcher(), Cleaner()))
+if __name__ == "__main__":
+    asyncio.run(
+        main(
+            TabResolver(cdp_url, target_tab_keyword, category), 
+            PageLoader(), 
+            ProductSearcher(), 
+            Cleaner()
+        )
+    )
