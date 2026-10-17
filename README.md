@@ -12,7 +12,7 @@ Python, Playwright, openpyxl
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone (https://github.com/Vooyatel-cmyk/retail_hunter)
+   git clone https://github.com/Vooyatel-cmyk/retail_hunter
    cd retail_hunter
    ```
 2. Установите зависимости:
