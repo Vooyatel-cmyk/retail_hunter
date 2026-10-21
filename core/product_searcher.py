@@ -10,14 +10,6 @@ class ProductSearcher:
 
             title = (await card_locator.locator("span.line-clamp-3:visible").inner_text()).strip()
             raw_price = await card_locator.locator('div.text-roman, div.text-text-black').first.inner_text()
-
-            old_price_locator = card_locator.locator('del.text-gray-dark')
-
-            if await old_price_locator.count() > 0:
-                raw_old_price = await old_price_locator.inner_text()
-            else:
-                raw_old_price = None
-
             raw_stock_locator = card_locator.locator('span.text-accent-primary')
 
             if await raw_stock_locator.count() > 0:
@@ -28,7 +20,6 @@ class ProductSearcher:
             return {
                 "title":title,
                 "raw_price":raw_price,
-                "raw_old_price":raw_old_price,
                 "raw_stock":raw_stock
             }
         
