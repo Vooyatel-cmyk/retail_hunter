@@ -7,12 +7,12 @@ class Writer:
             self.work_book = Workbook()
 
     def _file_name_generator(self) -> str:
-        return f"report_{datetime.now().strftime("%Y-%m-%d")}.xlsx"
+        return f".result/report_{datetime.now().strftime("%Y-%m-%d")}.xlsx"
 
     def new_book(self, data):
         work_book_sheet = self.work_book[self.work_book.sheetnames[0]]
         for product in data:
-            work_book_sheet.append([product["title"], product["raw_price"], product['raw_old_price'], product['raw_stock'], product['sale_percent']])
+            work_book_sheet.append([product["title"], product["raw_price"], product['raw_stock']])
         self.work_book.save(self._file_name_generator())
 
 def test():
@@ -51,4 +51,6 @@ def test():
  ]
     writer.new_book(data)
 
-test()
+if __name__ == "__main__":
+    print("go")
+    test()
