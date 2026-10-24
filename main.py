@@ -1,7 +1,6 @@
 import os
 import json
 import asyncio
-import pprint
 from playwright.async_api import async_playwright
 from core.tab_resolver import TabResolver
 from core.page_loader import PageLoader
@@ -17,10 +16,10 @@ for folder in required_dirs:
 with open("config.json", "r", encoding="utf-8") as file:
     config = json.load(file)
 
-cdp_url = config["network_settings"]["cdp_url"]
-target_tab_keyword = config["parsing_targets"]["target_tab_keyword"]
-timeout_delay = config["network_settings"]["timeout_seconds"]
-category = config["parsing_targets"]["categories"]
+cdp_url = config.get("network_settings", {}).get("cdp_url", "http://localhost:9222")
+target_tab_keyword = config.get("parsing_targets", {}).get("target_tab_keyword")
+timeout_delay = config.get("network_settings",{}).get("tiomeout_seconds", 1000)
+category = config.get("parsing_targets", {}).get("categories")
 
 async def main(tab_resolver, page_loader, product_searcher, cleaner, writer):
 
