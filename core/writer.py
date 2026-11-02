@@ -3,12 +3,13 @@ from datetime import datetime
 from typing import Any
 
 class Writer:
-    def __init__(self, work_book = None):
+    def __init__(self, work_book = None, name:str = "Nameless"):
+        self.name = name
         if work_book is None:
             self.work_book = Workbook()
 
     def _file_name_generator(self) -> str:
-        return f".result/report_{datetime.now().strftime("%Y-%m-%d")}.xlsx"
+        return f".result/{self.name}_report_{datetime.now().strftime("%Y-%m-%d")}.xlsx"
 
     def new_book(self, product_list: list[dict[str, Any]]) -> None:
         work_book_sheet = self.work_book[self.work_book.sheetnames[0]]

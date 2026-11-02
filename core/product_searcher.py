@@ -1,11 +1,11 @@
-from typing import List, Dict, Any, Optional
-from playwright.async_api import Locator
+from typing import List, Dict, Any
+import logging
 
 class ProductSearcher:
     def __init__(self):
         self.seen_products = set()
 
-    async def _parse_single_card(self, card_locator) -> Optional[Dict[str, Any]]:
+    async def _parse_single_card(self, card_locator) -> Dict[str, Any] | None:
         try:
 
             title = (await card_locator.locator("span.line-clamp-3:visible").inner_text()).strip()
@@ -24,7 +24,7 @@ class ProductSearcher:
             }
         
         except Exception as e: 
-            print(f"Ошибка внутри карточки: {e}")
+            logging.error(f"Ошибка внутри карточки: {e}")
             return None
 
     
